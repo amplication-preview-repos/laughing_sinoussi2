@@ -1,0 +1,38 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Fact {
+  createdAt DateTime @default(now())
+  date      String?
+  id        String   @id @default(cuid())
+  text      String?
+  updatedAt DateTime @updatedAt
+}
+
+model Joke {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  text      String?
+  updatedAt DateTime @updatedAt
+}
+
+model FortuneMessage {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  text      String?
+  updatedAt DateTime @updatedAt
+}
+
+model Settings {
+  createdAt            DateTime @default(now())
+  id                   String   @id @default(cuid())
+  notificationsEnabled Boolean?
+  theme                String?
+  updatedAt            DateTime @updatedAt
+}
